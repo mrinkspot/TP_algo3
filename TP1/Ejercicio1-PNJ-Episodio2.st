@@ -9,67 +9,62 @@ DenotativeObject subclass: #CarolinaLaCuranderaDeRiverwood
 
 !classDefinition: 'CarolinaLaCuranderaDeRiverwood class' category: 'Ejercicio1-PNJ-Episodio2'!
 CarolinaLaCuranderaDeRiverwood class
-	instanceVariableNames: 'frasesSiPjEsDesconocido frasesSiPjEsPrometedor cantidadDeInteraccionesPorPersonajes'!
+	instanceVariableNames: 'frasesSiPjEsDesconocido frasesSiPjEsPrometedor cantidadDeInteraccionesPorPJ'!
 
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones' stamp: 'AlgebraDeBoole 9/29/2021 18:16:11'!
+!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones' stamp: 'Frank 9/30/2021 17:34:39'!
 interactuarCon: unPersonajeJugadorAInteractuar
 	| respuestaSegunNumeroDeInteraccion |
 	
-	self recordarInteraccionCon: unPersonajeJugadorAInteractuar .
-	respuestaSegunNumeroDeInteraccion := self responderSegunCantidadDeInteraccionesCon: unPersonajeJugadorAInteractuar.
+	self recordarInteraccionCon: unPersonajeJugadorAInteractuar.
+	respuestaSegunNumeroDeInteraccion := self responderSegunCantidadDeInteraccionesCon: 	unPersonajeJugadorAInteractuar.
 	
-	(self verificarFinalDeDialogosPara: unPersonajeJugadorAInteractuar ) ifTrue: [
+	(self verificarFinalDeDialogosPara: unPersonajeJugadorAInteractuar) ifTrue: [
 		self cambiarLaCalificacionAPrometedorDe: 		unPersonajeJugadorAInteractuar].
 	
 	^ respuestaSegunNumeroDeInteraccion.! !
 
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones' stamp: 'AlgebraDeBoole 9/29/2021 14:57:45'!
+!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones' stamp: 'Frank 9/30/2021 17:06:54'!
 olvidar
-	cantidadDeInteraccionesPorPersonajes := Dictionary new.! !
+	cantidadDeInteraccionesPorPJ := Dictionary new.! !
 
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones' stamp: 'AlgebraDeBoole 9/29/2021 17:56:35'!
+!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones' stamp: 'Frank 9/30/2021 17:06:53'!
 reiniciarInteraccionesDe: unPersonaje
-	cantidadDeInteraccionesPorPersonajes at: unPersonaje put: 0.! !
+	cantidadDeInteraccionesPorPJ at: unPersonaje put: 0.! !
 
 
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones - privado' stamp: 'AlgebraDeBoole 9/29/2021 18:35:09'!
+!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones - privado' stamp: 'Frank 9/30/2021 16:52:34'!
 cambiarLaCalificacionAPrometedorDe: unPersonaje
-	self ciudadDeRiverwood agregarPersonajeAListaDePrometedores: unPersonaje.! !
+	Riverwood hacerPrometedorA: unPersonaje.! !
 
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones - privado' stamp: 'AlgebraDeBoole 9/29/2021 15:26:11'!
+!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones - privado' stamp: 'Frank 9/30/2021 17:06:54'!
 olvidarInteraccionesCon: unPersonaje
-	cantidadDeInteraccionesPorPersonajes at: unPersonaje put: 0.! !
+	cantidadDeInteraccionesPorPJ at: unPersonaje put: 0.! !
 
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones - privado' stamp: 'AlgebraDeBoole 9/29/2021 14:54:52'!
-recordarInteraccionCon: UnPersonaje
+!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones - privado' stamp: 'Frank 9/30/2021 17:29:03'!
+recordarInteraccionCon: unPJ
 	| numeroDeInteraccionActual |
-	numeroDeInteraccionActual  := cantidadDeInteraccionesPorPersonajes at: 	UnPersonaje ifAbsent: [0].
-	cantidadDeInteraccionesPorPersonajes at: UnPersonaje put: numeroDeInteraccionActual + 1.! !
+	numeroDeInteraccionActual  := cantidadDeInteraccionesPorPJ at: 	unPJ ifAbsent: [0].
+	cantidadDeInteraccionesPorPJ at: unPJ put: numeroDeInteraccionActual + 1.! !
 
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones - privado' stamp: 'AlgebraDeBoole 9/29/2021 18:36:48'!
+!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones - privado' stamp: 'Frank 9/30/2021 17:06:54'!
 responderSegunCantidadDeInteraccionesCon: unPersonaje
 	| cantidadDeInteracciones |
-	cantidadDeInteracciones := cantidadDeInteraccionesPorPersonajes at: unPersonaje.
-	(self ciudadDeRiverwood saberSiUnPersonajeEsPrometedor: unPersonaje ) ifTrue: [^ frasesSiPjEsPrometedor at: (cantidadDeInteracciones min: 	frasesSiPjEsPrometedor size) ].
+	cantidadDeInteracciones := cantidadDeInteraccionesPorPJ at: unPersonaje.
+	(Riverwood saberSiEsPrometedor: unPersonaje ) ifTrue: [^ frasesSiPjEsPrometedor at: (cantidadDeInteracciones min: 	frasesSiPjEsPrometedor size) ].
 	^ frasesSiPjEsDesconocido at: (cantidadDeInteracciones min: frasesSiPjEsDesconocido size).! !
 
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones - privado' stamp: 'AlgebraDeBoole 9/29/2021 18:34:10'!
+!CarolinaLaCuranderaDeRiverwood class methodsFor: 'interacciones - privado' stamp: 'Frank 9/30/2021 17:34:28'!
 verificarFinalDeDialogosPara: unPersonaje
-	^ (self ciudadDeRiverwood saberSiUnPersonajeEsPrometedor: unPersonaje ) not and: ( (cantidadDeInteraccionesPorPersonajes at: unPersonaje) >= 	(frasesSiPjEsDesconocido size)).! !
+	^ (Riverwood saberSiEsPrometedor: unPersonaje ) not and: ( (cantidadDeInteraccionesPorPJ at: unPersonaje) >= 	(frasesSiPjEsDesconocido size)).! !
 
 
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'ciudad' stamp: 'AlgebraDeBoole 9/29/2021 17:59:58'!
-ciudadDeRiverwood
-	^Riverwood! !
-
-
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 18:40:18'!
+!CarolinaLaCuranderaDeRiverwood class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:36:58'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
 	frasesSiPjEsDesconocido := #('¿Estás enfermo forastero?' 'Ah, solo quieres conversar' 'Cuando tengas una aflicción, ven a verme' ).
 	frasesSiPjEsPrometedor := #('Salud aventurero!!' 'Toma esta pócima que te hará crecer el pelo. Y cuando tengas una aflicción, ven a verme' ).
-	cantidadDeInteraccionesPorPersonajes := ((Dictionary new)).! !
+	cantidadDeInteraccionesPorPJ := ((Dictionary new) add: (Hamilton->1); add: (Tirion->1); yourself).! !
 
 
 !classDefinition: #Hamilton category: 'Ejercicio1-PNJ-Episodio2'!
@@ -83,25 +78,25 @@ DenotativeObject subclass: #Hamilton
 
 !classDefinition: 'Hamilton class' category: 'Ejercicio1-PNJ-Episodio2'!
 Hamilton class
-	instanceVariableNames: 'esPrometedorEnRiverwood'!
+	instanceVariableNames: 'pueblo'!
 
-!Hamilton class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 14:31:59'!
+!Hamilton class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 16:46:46'!
 esPrometedorEnRiverwood
-	^ esPrometedorEnRiverwood.! !
+	^ (pueblo saberSiEsPrometedor: self).! !
 
-!Hamilton class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 14:31:00'!
+!Hamilton class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 16:36:48'!
 hacerQueRiverwoodLoVeaDesconocido
-	esPrometedorEnRiverwood := false.! !
+	pueblo hacerDesconocidoA: self.! !
 
-!Hamilton class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 14:31:00'!
+!Hamilton class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:18:28'!
 hacerQueRiverwoodLoVeaPrometedor
-	esPrometedorEnRiverwood := true.! !
+	pueblo hacerPrometedorA: self.! !
 
-!Hamilton class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 18:40:18'!
+!Hamilton class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:36:58'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
-	esPrometedorEnRiverwood := true.! !
+	pueblo := Riverwood.! !
 
 
 !classDefinition: #PruebasInteracionesConCarolinaLaCurandera category: 'Ejercicio1-PNJ-Episodio2'!
@@ -117,7 +112,7 @@ DenotativeObject subclass: #PruebasInteracionesConCarolinaLaCurandera
 PruebasInteracionesConCarolinaLaCurandera class
 	instanceVariableNames: ''!
 
-!PruebasInteracionesConCarolinaLaCurandera class methodsFor: 'interacciones con un personaje' stamp: 'JMB 9/25/2021 12:48:36'!
+!PruebasInteracionesConCarolinaLaCurandera class methodsFor: 'interacciones con un personaje' stamp: 'Frank 9/30/2021 17:08:52'!
 test01CuandoLaCuranderaInteractuaPorPrimeraVezConUnPersonajeLeRespondeConSuPrimerFrase
 	| mensaje |
 	self olvidarInteraccionesYOpiniones.
@@ -245,11 +240,11 @@ treborElGuardia
 	^ TreborElGuardiaDeSkyrim ! !
 
 
-!PruebasInteracionesConCarolinaLaCurandera class methodsFor: 'opiniones e interacciones' stamp: 'AlgebraDeBoole 9/29/2021 18:12:11'!
+!PruebasInteracionesConCarolinaLaCurandera class methodsFor: 'opiniones e interacciones' stamp: 'Frank 9/30/2021 16:35:47'!
 esVistoPorElPuebloComoPrometedor: unPersonaje
 	^ unPersonaje esPrometedorEnRiverwood.! !
 
-!PruebasInteracionesConCarolinaLaCurandera class methodsFor: 'opiniones e interacciones' stamp: 'AlgebraDeBoole 9/29/2021 18:12:30'!
+!PruebasInteracionesConCarolinaLaCurandera class methodsFor: 'opiniones e interacciones' stamp: 'Frank 9/30/2021 17:09:01'!
 hacerQueLaCuranderaOlvideSusInteracciones
 	self carolinaLaCurandera olvidar.! !
 
@@ -258,9 +253,9 @@ hacerQueRiverwoodOlvideTodasSusCalificaciones
 	"Implementar cuando sea necesario"
 	self ciudadDeRiverwood olvidar.! !
 
-!PruebasInteracionesConCarolinaLaCurandera class methodsFor: 'opiniones e interacciones' stamp: 'AlgebraDeBoole 9/29/2021 18:13:13'!
+!PruebasInteracionesConCarolinaLaCurandera class methodsFor: 'opiniones e interacciones' stamp: 'Frank 9/30/2021 16:33:34'!
 hacerQueRiverwoodVeaPrometedorAHamilton
-	self ciudadDeRiverwood agregarPersonajeAListaDePrometedores: Hamilton.! !
+	self ciudadDeRiverwood hacerPrometedorA: Hamilton.! !
 
 !PruebasInteracionesConCarolinaLaCurandera class methodsFor: 'opiniones e interacciones' stamp: 'JMB 9/25/2021 12:48:36'!
 olvidarInteraccionesYOpiniones
@@ -383,10 +378,6 @@ test09CuandoElGuardiaInteractuaPorSegundaVezConUnPersonajeCalificadoPorElPuebloC
 ! !
 
 
-!PruebasInteracionesConTreborElGuardia class methodsFor: 'personajes' stamp: 'AlgebraDeBoole 9/29/2021 18:08:38'!
-ciudadDeRiverwood
-	^ Riverwood! !
-
 !PruebasInteracionesConTreborElGuardia class methodsFor: 'personajes' stamp: 'AlgebraDeBoole 9/29/2021 14:18:04'!
 hamilton
 	^ Hamilton! !
@@ -409,15 +400,19 @@ hacerQueRiverwoodOlvideTodasSusCalificaciones
 	"Implementar cuando sea necesario"
 	self ciudadDeRiverwood olvidar.! !
 
-!PruebasInteracionesConTreborElGuardia class methodsFor: 'opiniones e interacciones' stamp: 'AlgebraDeBoole 9/29/2021 18:09:59'!
+!PruebasInteracionesConTreborElGuardia class methodsFor: 'opiniones e interacciones' stamp: 'Frank 9/30/2021 17:25:56'!
 hacerQueRiverwoodVeaPrometedorAHamilton
-	"Assert isTrue: false description: 'Reemplazar esto por la implementación correspondiente'."
-	self ciudadDeRiverwood agregarPersonajeAListaDePrometedores: Hamilton.! !
+	self ciudadDeRiverwood hacerPrometedorA: Hamilton.! !
 
 !PruebasInteracionesConTreborElGuardia class methodsFor: 'opiniones e interacciones' stamp: 'AlgebraDeBoole 9/29/2021 18:10:38'!
 olvidarInteraccionesYOpiniones
 	self hacerQueRiverwoodOlvideTodasSusCalificaciones.
 ! !
+
+
+!PruebasInteracionesConTreborElGuardia class methodsFor: 'extras' stamp: 'Frank 9/30/2021 17:25:07'!
+ciudadDeRiverwood
+	^ Riverwood.! !
 
 
 !classDefinition: #Riverwood category: 'Ejercicio1-PNJ-Episodio2'!
@@ -431,45 +426,49 @@ DenotativeObject subclass: #Riverwood
 
 !classDefinition: 'Riverwood class' category: 'Ejercicio1-PNJ-Episodio2'!
 Riverwood class
-	instanceVariableNames: 'listaDePersonajesPrometedores'!
+	instanceVariableNames: 'PJsPrometedores'!
 
 !Riverwood class methodsFor: 'NPCs' stamp: 'AlgebraDeBoole 9/29/2021 17:35:09'!
 carolinaLaCurandera
 	^CarolinaLaCuranderaDeRiverwood.! !
 
-!Riverwood class methodsFor: 'NPCs' stamp: 'AlgebraDeBoole 9/29/2021 17:35:31'!
-treborElGuardian
+!Riverwood class methodsFor: 'NPCs' stamp: 'Frank 9/30/2021 17:11:14'!
+treborElGuardia
 	^TreborElGuardiaDeSkyrim .! !
 
 
-!Riverwood class methodsFor: 'interacciones' stamp: 'AlgebraDeBoole 9/29/2021 17:56:10'!
-agregarPersonajeAListaDePrometedores: unPersonaje
-	listaDePersonajesPrometedores add: unPersonaje.
-	self treborElGuardian reiniciarInteraccionesDe: unPersonaje.
-	self carolinaLaCurandera reiniciarInteraccionesDe: unPersonaje.
+!Riverwood class methodsFor: 'interacciones' stamp: 'Frank 9/30/2021 16:38:18'!
+hacerDesconocidoA: unPJ
+	PJsPrometedores remove: unPJ.! !
+
+!Riverwood class methodsFor: 'interacciones' stamp: 'Frank 9/30/2021 17:20:20'!
+hacerPrometedorA: unPJ
+	PJsPrometedores add: unPJ.
+	self treborElGuardia reiniciarInteraccionesDe: unPJ.
+	self carolinaLaCurandera reiniciarInteraccionesDe: unPJ.
 	! !
 
-!Riverwood class methodsFor: 'interacciones' stamp: 'AlgebraDeBoole 9/29/2021 17:37:50'!
+!Riverwood class methodsFor: 'interacciones' stamp: 'Frank 9/30/2021 16:38:18'!
 olvidar
-	listaDePersonajesPrometedores := OrderedCollection new.
+	PJsPrometedores := OrderedCollection new.
 	self reiniciarInteraccionesDeNPCdeRiverwood.! !
 
-!Riverwood class methodsFor: 'interacciones' stamp: 'AlgebraDeBoole 9/29/2021 17:39:48'!
-saberSiUnPersonajeEsPrometedor: unPersonaje
-	^ (listaDePersonajesPrometedores includes: unPersonaje ).! !
+!Riverwood class methodsFor: 'interacciones' stamp: 'Frank 9/30/2021 17:20:51'!
+saberSiEsPrometedor: unPJ
+	^ (PJsPrometedores includes: unPJ ).! !
 
 
-!Riverwood class methodsFor: 'interacciones - privado' stamp: 'AlgebraDeBoole 9/29/2021 17:37:33'!
+!Riverwood class methodsFor: 'interacciones - privado' stamp: 'Frank 9/30/2021 17:11:14'!
 reiniciarInteraccionesDeNPCdeRiverwood
 	self carolinaLaCurandera olvidar.
-	self treborElGuardian olvidar.! !
+	self treborElGuardia olvidar.! !
 
 
-!Riverwood class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 18:40:18'!
+!Riverwood class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:36:58'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
-	listaDePersonajesPrometedores := ((OrderedCollection new)).! !
+	PJsPrometedores := ((OrderedCollection new)).! !
 
 
 !classDefinition: #Tirion category: 'Ejercicio1-PNJ-Episodio2'!
@@ -483,25 +482,25 @@ DenotativeObject subclass: #Tirion
 
 !classDefinition: 'Tirion class' category: 'Ejercicio1-PNJ-Episodio2'!
 Tirion class
-	instanceVariableNames: 'esPrometedorEnRiverwood'!
+	instanceVariableNames: 'pueblo'!
 
-!Tirion class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 14:32:35'!
+!Tirion class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 16:40:18'!
 esPrometedorEnRiverwood
-	^ esPrometedorEnRiverwood.! !
+	^ pueblo saberSiEsPrometedor: self.! !
 
-!Tirion class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 14:32:35'!
+!Tirion class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 16:40:44'!
 hacerQueRiverwoodLoVeaDesconocido
-	esPrometedorEnRiverwood := false.! !
+	pueblo hacerDesconocidoA: self.! !
 
-!Tirion class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 14:32:35'!
+!Tirion class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:18:55'!
 hacerQueRiverwoodLoVeaPrometedor
-	esPrometedorEnRiverwood := true.! !
+	pueblo hacerPrometedorA: self.! !
 
-!Tirion class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 18:40:18'!
+!Tirion class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:36:58'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
-	esPrometedorEnRiverwood := false.! !
+	pueblo := Riverwood.! !
 
 
 !classDefinition: #TreborElGuardiaDeSkyrim category: 'Ejercicio1-PNJ-Episodio2'!
@@ -515,59 +514,47 @@ DenotativeObject subclass: #TreborElGuardiaDeSkyrim
 
 !classDefinition: 'TreborElGuardiaDeSkyrim class' category: 'Ejercicio1-PNJ-Episodio2'!
 TreborElGuardiaDeSkyrim class
-	instanceVariableNames: 'frasesParaPjConCalificacionDesconocido frasesParaPjConCalificacionPrometedora cantidadDeInteraccionesPorPersonajes'!
+	instanceVariableNames: 'frasesParaPjConCalificacionDesconocido frasesParaPjConCalificacionPrometedora cantidadDeInteraccionesPorPJ'!
 
-!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'AlgebraDeBoole 9/29/2021 16:25:55'!
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'Frank 9/30/2021 17:23:18'!
 interactuarCon: unPersonajeJugadorAInteractuar
 	| respuestaSegunNumeroDeInteraccion |
 
-	self recordarInteraccionCon: unPersonajeJugadorAInteractuar .
-	self cambiarDialogosPara: unPersonajeJugadorAInteractuar .
-	respuestaSegunNumeroDeInteraccion := self responderSegunCantidadDeInteraccionesCon: unPersonajeJugadorAInteractuar.
+	self recordarInteraccionCon: unPersonajeJugadorAInteractuar.
+	respuestaSegunNumeroDeInteraccion := self responderSegunCantidadDeInteraccionesCon: 	unPersonajeJugadorAInteractuar.
 	^ respuestaSegunNumeroDeInteraccion.
 	! !
 
-!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'AlgebraDeBoole 9/29/2021 14:07:28'!
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'Frank 9/30/2021 17:07:16'!
 olvidar
-	cantidadDeInteraccionesPorPersonajes := Dictionary new.! !
+	cantidadDeInteraccionesPorPJ := Dictionary new.! !
 
-!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'AlgebraDeBoole 9/29/2021 17:56:10'!
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'Frank 9/30/2021 17:07:16'!
 reiniciarInteraccionesDe: unPersonaje
-	cantidadDeInteraccionesPorPersonajes at: unPersonaje put: 0.! !
+	cantidadDeInteraccionesPorPJ at: unPersonaje put: 0.! !
 
 
-!TreborElGuardiaDeSkyrim class methodsFor: 'ciudad' stamp: 'AlgebraDeBoole 9/29/2021 17:46:43'!
-ciudadDeRiverwood
-	^Riverwood .! !
-
-
-!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones - privado' stamp: 'AlgebraDeBoole 9/29/2021 17:57:26'!
-cambiarDialogosPara: unPersonaje
-"
-	(unPersonaje esPrometedorEnRiverwood and:  ( (cantidadDeInteraccionesPorPersonajes at: unPersonaje) < (2)) )ifTrue:[cantidadDeInteraccionesPorPersonajes at: unPersonaje put: 1]."
-	! !
-
-!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones - privado' stamp: 'AlgebraDeBoole 9/29/2021 14:05:35'!
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones - privado' stamp: 'Frank 9/30/2021 17:07:16'!
 recordarInteraccionCon: UnPersonaje
 	| numeroDeInteraccionActual |
-	numeroDeInteraccionActual  := cantidadDeInteraccionesPorPersonajes at: 	UnPersonaje ifAbsent: [0].
-	cantidadDeInteraccionesPorPersonajes at: UnPersonaje put: numeroDeInteraccionActual + 1.! !
+	numeroDeInteraccionActual  := cantidadDeInteraccionesPorPJ at: 	UnPersonaje ifAbsent: [0].
+	cantidadDeInteraccionesPorPJ at: UnPersonaje put: numeroDeInteraccionActual + 1.! !
 
-!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones - privado' stamp: 'AlgebraDeBoole 9/29/2021 17:49:30'!
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones - privado' stamp: 'Frank 9/30/2021 17:27:26'!
 responderSegunCantidadDeInteraccionesCon: unPersonaje
 	| cantidadDeInteracciones |
-	cantidadDeInteracciones := cantidadDeInteraccionesPorPersonajes at: unPersonaje.
-	(self ciudadDeRiverwood saberSiUnPersonajeEsPrometedor: unPersonaje) ifTrue: [^ frasesParaPjConCalificacionPrometedora at: 	(cantidadDeInteracciones min: 	frasesParaPjConCalificacionPrometedora size) ].
+	cantidadDeInteracciones := cantidadDeInteraccionesPorPJ at: unPersonaje.
+	(Riverwood saberSiEsPrometedor: unPersonaje) ifTrue: [^ frasesParaPjConCalificacionPrometedora at: 	(cantidadDeInteracciones min: 	frasesParaPjConCalificacionPrometedora size) ].
 	^ frasesParaPjConCalificacionDesconocido at: (cantidadDeInteracciones min: frasesParaPjConCalificacionDesconocido size).! !
 
 
-!TreborElGuardiaDeSkyrim class methodsFor: 'as yet unclassified' stamp: 'AlgebraDeBoole 9/29/2021 18:40:18'!
+!TreborElGuardiaDeSkyrim class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:36:58'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
 	frasesParaPjConCalificacionDesconocido := #('Hola forastero' '¿Todo bien?' '¿Algún problema?' ).
 	frasesParaPjConCalificacionPrometedora := #('Bienvenido aventurero!!' 'Espero que tengas una buena estadia en Riverwood' ).
-	cantidadDeInteraccionesPorPersonajes := ((Dictionary new) add: (Hamilton->4); yourself).! !
+	cantidadDeInteraccionesPorPJ := ((Dictionary new)).! !
 
 CarolinaLaCuranderaDeRiverwood initializeAfterFileIn!
 Hamilton initializeAfterFileIn!
