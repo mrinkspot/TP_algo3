@@ -58,7 +58,7 @@ verificarFinalDeDialogosPara: unPersonaje
 	^ (Riverwood saberSiEsPrometedor: unPersonaje ) not and: ( (cantidadDeInteraccionesPorPJ at: unPersonaje) >= 	(frasesSiPjEsDesconocido size)).! !
 
 
-!CarolinaLaCuranderaDeRiverwood class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:36:58'!
+!CarolinaLaCuranderaDeRiverwood class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 18:41:38'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -80,19 +80,20 @@ DenotativeObject subclass: #Hamilton
 Hamilton class
 	instanceVariableNames: 'pueblo'!
 
-!Hamilton class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 16:46:46'!
+!Hamilton class methodsFor: 'opiniones' stamp: 'Frank 9/30/2021 16:46:46'!
 esPrometedorEnRiverwood
 	^ (pueblo saberSiEsPrometedor: self).! !
 
-!Hamilton class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 16:36:48'!
+!Hamilton class methodsFor: 'opiniones' stamp: 'Frank 9/30/2021 16:36:48'!
 hacerQueRiverwoodLoVeaDesconocido
 	pueblo hacerDesconocidoA: self.! !
 
-!Hamilton class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:18:28'!
+!Hamilton class methodsFor: 'opiniones' stamp: 'Frank 9/30/2021 17:18:28'!
 hacerQueRiverwoodLoVeaPrometedor
 	pueblo hacerPrometedorA: self.! !
 
-!Hamilton class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:36:58'!
+
+!Hamilton class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 18:41:38'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -464,7 +465,7 @@ reiniciarInteraccionesDeNPCdeRiverwood
 	self treborElGuardia olvidar.! !
 
 
-!Riverwood class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:36:58'!
+!Riverwood class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 18:41:38'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -484,19 +485,20 @@ DenotativeObject subclass: #Tirion
 Tirion class
 	instanceVariableNames: 'pueblo'!
 
-!Tirion class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 16:40:18'!
+!Tirion class methodsFor: 'opiniones' stamp: 'Frank 9/30/2021 16:40:18'!
 esPrometedorEnRiverwood
 	^ pueblo saberSiEsPrometedor: self.! !
 
-!Tirion class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 16:40:44'!
+!Tirion class methodsFor: 'opiniones' stamp: 'Frank 9/30/2021 16:40:44'!
 hacerQueRiverwoodLoVeaDesconocido
 	pueblo hacerDesconocidoA: self.! !
 
-!Tirion class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:18:55'!
+!Tirion class methodsFor: 'opiniones' stamp: 'Frank 9/30/2021 17:18:55'!
 hacerQueRiverwoodLoVeaPrometedor
 	pueblo hacerPrometedorA: self.! !
 
-!Tirion class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:36:58'!
+
+!Tirion class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 18:41:38'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -548,7 +550,7 @@ responderSegunCantidadDeInteraccionesCon: unPersonaje
 	^ frasesParaPjConCalificacionDesconocido at: (cantidadDeInteracciones min: frasesParaPjConCalificacionDesconocido size).! !
 
 
-!TreborElGuardiaDeSkyrim class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 17:36:58'!
+!TreborElGuardiaDeSkyrim class methodsFor: 'as yet unclassified' stamp: 'Frank 9/30/2021 18:41:39'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
