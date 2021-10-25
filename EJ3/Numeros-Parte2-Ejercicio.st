@@ -361,21 +361,21 @@ Numero subclass: #Entero
 	poolDictionaries: ''
 	category: 'Numeros-Parte2-Ejercicio'!
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 16:13:54'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 17:43:19'!
 * aMultiplier 
-	^ aMultiplier serMultiplicadoPorEntero: self.! !
+	^ aMultiplier beMultipliedByEntero: self.! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 16:17:15'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 17:45:45'!
 + anAdder
-	^ anAdder serSumadoPorEntero: self.! !
+	^ anAdder beAddedByEntero: self.! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 16:14:47'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 17:44:28'!
 - aSubtrahend 
-	^ aSubtrahend serRestadoPorEntero: self.! !
+	^ aSubtrahend beSubtractedByEntero: self.! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 16:13:15'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 17:41:26'!
 / aDivisor 
-	^ aDivisor serDivididoPorEntero: self.! !
+	^ aDivisor beDividedByEntero: self.! !
 
 !Entero methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 14:34:17'!
 fibonacci
@@ -445,37 +445,38 @@ greatestCommonDivisorWith: anEntero
 	^self class with: (value gcd: anEntero integerValue)! !
 
 
-!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:13:15'!
-serDivididoPorEntero: aDivisor
-	^ Fraccion with: aDivisor over: self.! !
 
-!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:39:23'!
-serDivididoPorFraccion: aDivisor
-	^ Fraccion with: aDivisor numerator over: self * (aDivisor denominator).! !
-
-!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:13:54'!
-serMultiplicadoPorEntero: aMultiplier
-	^ self class with: value  * aMultiplier integerValue.! !
-
-!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:14:19'!
-serMultiplicadoPorFraccion: aMultiplier
-	^ Fraccion with: self * aMultiplier numerator over: aMultiplier denominator.! !
-
-!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:14:46'!
-serRestadoPorEntero: aSubtrahend
-	^ self class with: aSubtrahend integerValue - value.! !
-
-!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:40:36'!
-serRestadoPorFraccion: aSubtrahend
-	^ Fraccion with: (aSubtrahend numerator) - (self * (aSubtrahend denominator)) over: aSubtrahend denominator! !
-
-!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:17:15'!
-serSumadoPorEntero: anAdder
+!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:45:45'!
+beAddedByEntero: anAdder
 	^self class with: value + anAdder integerValue.! !
 
-!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:16:54'!
-serSumadoPorFraccion: anAdder
+!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:46:02'!
+beAddedByFraccion: anAdder
 	^ Fraccion with: self * (anAdder denominator) + anAdder numerator over: anAdder denominator.! !
+
+!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:41:26'!
+beDividedByEntero: aDivisor
+	^ Fraccion with: aDivisor over: self.! !
+
+!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:41:53'!
+beDividedByFraccion: aDivisor
+	^ Fraccion with: aDivisor numerator over: self * (aDivisor denominator).! !
+
+!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:43:19'!
+beMultipliedByEntero: aMultiplier
+	^ self class with: value  * aMultiplier integerValue.! !
+
+!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:43:58'!
+beMultipliedByFraccion: aMultiplier
+	^ Fraccion with: self * aMultiplier numerator over: aMultiplier denominator.! !
+
+!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:44:28'!
+beSubtractedByEntero: aSubtrahend
+	^ self class with: aSubtrahend integerValue - value.! !
+
+!Entero methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:45:02'!
+beSubtractedByFraccion: aSubtrahend
+	^ Fraccion with: (aSubtrahend numerator) - (self * (aSubtrahend denominator)) over: aSubtrahend denominator! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -503,23 +504,23 @@ Numero subclass: #Fraccion
 	poolDictionaries: ''
 	category: 'Numeros-Parte2-Ejercicio'!
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 16:29:27'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 17:43:58'!
 * aMultiplier 
 
-	^ aMultiplier serMultiplicadoPorFraccion: self.
+	^ aMultiplier beMultipliedByFraccion: self.
 	! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 16:28:40'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 17:46:02'!
 + anAdder 
-	^ anAdder serSumadoPorFraccion: self! !
+	^ anAdder beAddedByFraccion: self! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 16:30:03'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 17:45:02'!
 - aSubtrahend 
-	^ aSubtrahend serRestadoPorFraccion: self.! !
+	^ aSubtrahend beSubtractedByFraccion: self.! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 16:13:34'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Frank 10/25/2021 17:41:53'!
 / aDivisor 
-	^ aDivisor serDivididoPorFraccion: self.! !
+	^ aDivisor beDividedByFraccion: self.! !
 
 
 !Fraccion methodsFor: 'comparing' stamp: 'HernanWilkinson 5/7/2016 20:42'!
@@ -580,45 +581,45 @@ printOn: aStream
 		print: denominator ! !
 
 
-!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:38:40'!
-serDivididoPorEntero: aDivisor
-	^ Fraccion with: (aDivisor * self denominator ) over: (self numerator).! !
-
-!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:13:34'!
-serDivididoPorFraccion: aDivisor
-	^(aDivisor numerator * self denominator) / (aDivisor denominator * self numerator)! !
-
-!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:13:54'!
-serMultiplicadoPorEntero: aMultiplier
-	^ Fraccion with: (self numerator) * aMultiplier over: self denominator.! !
-
-!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:14:19'!
-serMultiplicadoPorFraccion: aMultiplier
-	^(numerator * aMultiplier numerator) / (denominator * aMultiplier denominator)! !
-
-!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:14:47'!
-serRestadoPorEntero: aSubtrahend
-	^Fraccion with: ((aSubtrahend * self denominator) - self numerator) over: self denominator.! !
-
-!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:15:09'!
-serRestadoPorFraccion: aSubtrahend
-| newNumerator newDenominator |
-	newNumerator := (denominator * aSubtrahend numerator) - (numerator * aSubtrahend denominator).
-	newDenominator := denominator * aSubtrahend denominator.
-	^newNumerator / newDenominator ! !
-
-!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:17:15'!
-serSumadoPorEntero: anAdder
+!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:45:45'!
+beAddedByEntero: anAdder
 	^ Fraccion with: self numerator + (anAdder * self denominator) over: self denominator.! !
 
-!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 16:23:29'!
-serSumadoPorFraccion: anAdder
+!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:46:02'!
+beAddedByFraccion: anAdder
 | newNumerator newDenominator |
 	
 	newNumerator := (numerator  * anAdder denominator) + (denominator * anAdder numerator).
 	
 	newDenominator := denominator * anAdder denominator.
 	
+	^newNumerator / newDenominator ! !
+
+!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:41:26'!
+beDividedByEntero: aDivisor
+	^ Fraccion with: (aDivisor * self denominator ) over: (self numerator).! !
+
+!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:41:53'!
+beDividedByFraccion: aDivisor
+	^(aDivisor numerator * self denominator) / (aDivisor denominator * self numerator)! !
+
+!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:43:18'!
+beMultipliedByEntero: aMultiplier
+	^ Fraccion with: (self numerator) * aMultiplier over: self denominator.! !
+
+!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:43:58'!
+beMultipliedByFraccion: aMultiplier
+	^(numerator * aMultiplier numerator) / (denominator * aMultiplier denominator)! !
+
+!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:44:28'!
+beSubtractedByEntero: aSubtrahend
+	^Fraccion with: ((aSubtrahend * self denominator) - self numerator) over: self denominator.! !
+
+!Fraccion methodsFor: 'as yet unclassified' stamp: 'Frank 10/25/2021 17:45:02'!
+beSubtractedByFraccion: aSubtrahend
+| newNumerator newDenominator |
+	newNumerator := (denominator * aSubtrahend numerator) - (numerator * aSubtrahend denominator).
+	newDenominator := denominator * aSubtrahend denominator.
 	^newNumerator / newDenominator ! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
